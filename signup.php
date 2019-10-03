@@ -17,10 +17,17 @@
     }
     else {
     $sql = "INSERT INTO signup VALUES ('$name', '$gender', '$college', '$email', '$phone', '$pass');";
-    if ($conn->query($sql)){
+    if ($conn->query($sql)) {
     echo "New record is inserted sucessfully";
     }
-    else{
+    else {
+    echo "Error: ". $sql ."". $conn->error;
+    }
+    $sql= "INSERT INTO `login`(`email`, `pass`) VALUES (\"$email\", \"$pass\")";
+    if ($conn->query($sql)) {
+    echo "<br>New ID created";
+    }
+    else {
     echo "Error: ". $sql ."". $conn->error;
     }
     $conn->close();

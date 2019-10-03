@@ -11,6 +11,23 @@
   <body>
     <div class="bg-image">
     </div>
+    <?php
+    $cache = 'sample.cache.php';
+    if (file_exists($cache)) {
+      class loginInfo {
+      }
+      $objData = file_get_contents($cache);
+      $obj = unserialize($objData);
+      if (!empty($obj)) {
+          $email = $obj->email;
+          $pass = $obj->pass;
+      }
+    }
+    else {
+      $email="";
+      $pass="";
+    }
+     ?>
     <div class="main">
       <style>
       body, html {
@@ -77,12 +94,12 @@
                     <form class="form-signin" action="login.php" method="post">
                       <div class="form-label-group">
                         <label for="inputEmail">Email address</label>
-                        <input type="email" name="email" id="inputEmail" class="form-control" placeholder="Email address" required autofocus>
+                        <input type="email" name="email" id="inputEmail" class="form-control" placeholder="Email address" value="<?php echo $email; ?>" required autofocus>
                       </div>
 
                       <div class="form-label-group">
                         <label for="inputPassword">Password</label>
-                        <input type="password" name="pass" id="inputPassword" class="form-control" placeholder="Password" required>
+                        <input type="password" name="pass" id="inputPassword" class="form-control" placeholder="Password" value="<?php echo $pass; ?>" required>
                       </div>
                       <div class="options text-center text-md-right mt-1">
                         <p style="color: blue;">Not a member? <a href="#panel2" data-toggle="tab" role="tab" style="color: rgb(171, 194, 219);">Sign Up</a></p>
@@ -90,10 +107,10 @@
                       </div>
 
                       <div class="custom-control custom-checkbox mb-3">
-                        <input type="checkbox" class="custom-control-input" id="customCheck1" value="chkMe">
+                        <input type="checkbox" class="custom-control-input" id="customCheck1" name="chkMe" value="PassSave">
                         <label class="custom-control-label" for="customCheck1">Remember password</label>
                       </div>
-                      <button class="btn btn-lg btn-primary btn-block text-uppercase" type="submit" onclick="<?php handleCache(); ?>" >Sign in</button>
+                      <button class="btn btn-lg btn-primary btn-block text-uppercase" type="submit" >Sign in</button>
                       <hr class="my-4">
                     </form>
                   </div>
@@ -150,14 +167,6 @@
         </div>
       </div>
     </div>
-    <div id="result">
-    </div>
-    <?php
-    function handleCache() {
-      echo "document.getElementById('result').innerHTML='<h1>HELLO</h1>'";
-    }
-    echo "php working";
-     ?>
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
