@@ -74,15 +74,15 @@
               <div class="card-body" style= " font-size: 1.4em">
                 <div class="tab-content">
                   <div class="tab-pane fade show active" id="panel1" role="tabpanel">
-                    <form class="form-signin" action="#">
+                    <form class="form-signin" action="login.php" method="post">
                       <div class="form-label-group">
                         <label for="inputEmail">Email address</label>
-                        <input type="email" id="inputEmail" class="form-control" placeholder="Email address" required autofocus>
+                        <input type="email" name="email" id="inputEmail" class="form-control" placeholder="Email address" required autofocus>
                       </div>
 
                       <div class="form-label-group">
                         <label for="inputPassword">Password</label>
-                        <input type="password" id="inputPassword" class="form-control" placeholder="Password" required>
+                        <input type="password" name="pass" id="inputPassword" class="form-control" placeholder="Password" required>
                       </div>
                       <div class="options text-center text-md-right mt-1">
                         <p style="color: blue;">Not a member? <a href="#panel2" data-toggle="tab" role="tab" style="color: rgb(171, 194, 219);">Sign Up</a></p>
@@ -90,7 +90,7 @@
                       </div>
 
                       <div class="custom-control custom-checkbox mb-3">
-                        <input type="checkbox" class="custom-control-input" id="customCheck1">
+                        <input type="checkbox" class="custom-control-input" id="customCheck1" value="chkMe">
                         <label class="custom-control-label" for="customCheck1">Remember password</label>
                       </div>
                       <button class="btn btn-lg btn-primary btn-block text-uppercase" type="submit" onclick="<?php handleCache(); ?>" >Sign in</button>
@@ -98,43 +98,43 @@
                     </form>
                   </div>
                   <div class="tab-pane fade" id="panel2" role="tabpanel">
-                    <form class="form-signin">
+                    <form class="form-signin" action="signup.php" method="post">
                       <div class="form-label-group">
                         <label for="inputName">Your Name</label>
-                        <input type="text" id="inputName" class="form-control" placeholder="Username" required autofocus>
+                        <input type="text" id="inputName" name="name" class="form-control" placeholder="Username" required autofocus>
                       </div>
 
                       <div class="form-label-group">
                         <label for="inputGender">Gender</label>
-                        <select id="inputGender" class="form-control">
-                          <option value="volvo">Male</option>
-                          <option value="saab">Female</option>
+                        <select id="inputGender" name="gender" class="form-control">
+                          <option value="Male">Male</option>
+                          <option value="Female">Female</option>
                         </select>
                       </div>
 
                       <div class="form-label-group">
                         <label for="inputCollege">Enter your College name</label>
-                        <input type="text" id="inputCollege" class="form-control" placeholder="College Name" required autofocus>
+                        <input type="text" id="inputCollege" name="college" class="form-control" placeholder="College Name" required autofocus>
                       </div>
 
                       <div class="form-label-group">
                         <label for="inputEmail">Email address</label>
-                        <input type="email" id="inputEmail" class="form-control" placeholder="Email address" required autofocus>
+                        <input type="email" name="email" id="inputEmail" class="form-control" placeholder="Email address" required autofocus>
                       </div>
 
                       <div class="form-label-group">
                         <label for="inputNumber">Phone Number</label>
-                        <input type="text" id="inputNumber" class="form-control" placeholder="Eneter your phone number here" required autofocus>
+                        <input type="text" name="phone" id="inputNumber" class="form-control" placeholder="Eneter your phone number here" required autofocus>
                       </div>
 
                       <div class="form-label-group">
                         <label for="inputPass">Make a Password</label>
-                        <input type="password" id="inputPass" class="form-control" placeholder="Make a password" required autofocus>
+                        <input type="password" name="pass" id="inputPass" class="form-control" placeholder="Make a password" required autofocus>
                       </div>
 
                       <div class="form-label-group">
                         <label for="inputPassword">Confirm pass</label>
-                        <input type="password" id="inputConfirm" class="form-control" placeholder="Confirm your password" required>
+                        <input type="password" name="confirm_pass" id="inputConfirm" class="form-control" placeholder="Confirm your password" required>
                       </div>
                       <div class="options text-center text-md-right mt-1">
                         <p style="color: blue;">Already Member? <a data-toggle="tab" href="#panel1" role="tab" style="color: rgb(171, 194, 219);">Sign Up</a></p>
@@ -150,10 +150,13 @@
         </div>
       </div>
     </div>
+    <div id="result">
+    </div>
     <?php
     function handleCache() {
-      echo "<h1>I will handle Cache</h1>";
+      echo "document.getElementById('result').innerHTML='<h1>HELLO</h1>'";
     }
+    echo "php working";
      ?>
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
