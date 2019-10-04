@@ -1,1 +1,1 @@
-O:9:"loginInfo":2:{s:5:"email";s:19:"neoanoman@gmail.com";s:4:"pass";s:9:"neoanoman";}
+O:9:"loginInfo":2:{s:5:"email";s:14:"user@gmail.com";s:4:"pass";s:4:"pass";}
